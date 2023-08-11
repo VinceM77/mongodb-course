@@ -49,6 +49,34 @@ const mattDiamant = db.movies.find({
 
 console.log(mattDiamant);
 
+const neilBurger = db.movies.find({
+    $or: [{
+        directors: "Neil Burger"
+    }, {
+        directors: "Brad Furman"
+    }]
+}).projection({
+    directors: 1,
+    title: 1
+})
+
+console.log(neilBurger);
+
+const theOldest = db.movies.findOne(
+    {}, // condition
+    { 
+        // projection
+        year: 1
+    }, 
+    {
+        // sort( year: 1 )
+        sort: { 
+            year: 1
+        }
+    });
+
+console.log(theOldest);
+
 
 // récuperer les clés de la bdd sample_mflix
 var keys = [];
