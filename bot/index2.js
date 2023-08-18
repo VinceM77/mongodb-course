@@ -33,6 +33,12 @@ async function init() {
         intents: [GatewayIntentBits.Guilds]
     });
 
+    client.on("interactionCreate",(interaction)=>{
+        console.log(interaction.user.displayName, "a fait", interaction.commandName)
+
+    });
+    
+
     await client.login(TOKEN);
 
     console.log("Le bot est activé !");
